@@ -33,7 +33,7 @@ namespace GrpcClientWorkerService.Workers
                 {
                     using var scope = _serviceProvider.CreateScope();
 
-                    var service = scope.ServiceProvider.GetRequiredService<GrpcClientService>();
+                    var service = scope.ServiceProvider.GetRequiredService<GrpcFileStreamingClientService>();
 
                     await service.SendMessage(stoppingToken);
 

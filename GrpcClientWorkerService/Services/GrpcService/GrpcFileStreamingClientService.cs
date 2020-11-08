@@ -13,12 +13,12 @@ using Microsoft.Extensions.Logging;
 
 namespace GrpcClientWorkerService.Services.GrpcService
 {
-    public class GrpcClientService
+    public class GrpcFileStreamingClientService
     {
         private readonly IConfiguration _configuration;
         private readonly IFileNumberService _fileNumberService;
-        private readonly ILogger<GrpcClientService> _logger;
-        public GrpcClientService(IConfiguration configuration, IFileNumberService fileNumberService, ILogger<GrpcClientService> logger)
+        private readonly ILogger<GrpcFileStreamingClientService> _logger;
+        public GrpcFileStreamingClientService(IConfiguration configuration, IFileNumberService fileNumberService, ILogger<GrpcFileStreamingClientService> logger)
         {
             _configuration = configuration;
             _fileNumberService = fileNumberService;

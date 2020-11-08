@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-GrpcClientWorkerService-B73C1D03-A1BE-4647-94B7-3443F54F985A</UserSecretsId>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -24,7 +25,14 @@
 
   <ItemGroup>
     <Protobuf Include="..\GrpcServer\Protos\FileStreaming.proto" GrpcServices="Client">
-      <Link>FileStreaming.proto</Link>
+      <Link>Protos\FileStreaming.proto</Link>
     </Protobuf>
+    <Protobuf Include="..\GrpcServer\Protos\RandomMessage.proto" GrpcServices="Client">
+      <Link>Protos\RandomMessage.proto</Link>
+    </Protobuf>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Protos\" />
   </ItemGroup>
 </Project>

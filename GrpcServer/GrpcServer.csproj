@@ -2,18 +2,35 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\20201108213947_Mig_Init.cs" />
+    <Compile Remove="Infrastructure\20201108213947_Mig_Init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protos\FileStreaming.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\RandomMessage.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Files\" />
+    <Folder Include="Protos\google\" />
   </ItemGroup>
 
 </Project>

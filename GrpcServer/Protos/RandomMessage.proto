@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+
+option csharp_namespace = "RandomMessage.Protos";
+
+service RandomMessageService{
+	rpc SendRandomMessage(RanodmMessageContent) returns (.ReceiveResult ) ;
+	rpc GetRandomMessage(Empty) returns (RanodmMessageContent);
+}
+
+message RanodmMessageContent{
+	string Message=1;
+	int64 sentAt=2;
+}
+
+message Empty{
+
+}
+
+message ReceiveResult{
+	bool IsReceived=1;
+}
