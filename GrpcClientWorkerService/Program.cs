@@ -29,18 +29,28 @@ namespace GrpcClientWorkerService
 
                     services.AddHttpClient<RandomJokeApiService>();
 
-                    services.AddScoped<GrpcClientRandomMessageService>(sp =>
+                    services.AddGrpcClient<RandomMessageService.RandomMessageServiceClient>(options =>
                     {
-                        var serverAddress=hostContext.Configuration.GetSection("Grpc").GetChildren()
+                        var serverAddress = hostContext.Configuration.GetSection("Grpc").GetChildren()
                             .Where(c => c.Key.Equals("ServerUrl"))
                             .Select(c => c.Value).FirstOrDefault();
+                        options.Address=new Uri(serverAddress);
+                    } );
 
-                        var apiService = sp.GetRequiredService<RandomJokeApiService>();
+                    //services.AddScoped<GrpcClientRandomMessageService>(sp =>
+                    //{
+                    //    var serverAddress=hostContext.Configuration.GetSection("Grpc").GetChildren()
+                    //        .Where(c => c.Key.Equals("ServerUrl"))
+                    //        .Select(c => c.Value).FirstOrDefault();
 
-                        var channel = GrpcChannel.ForAddress(serverAddress);
+                    //    var apiService = sp.GetRequiredService<RandomJokeApiService>();
 
-                        return new GrpcClientRandomMessageService(new RandomMessageService.RandomMessageServiceClient(channel), apiService);
-                    });
+                    //    var channel = GrpcChannel.ForAddress(serverAddress);
+
+                    //    return new GrpcClientRandomMessageService(new RandomMessageService.RandomMessageServiceClient(channel), apiService);
+                    //});
+
+                    services.AddScoped<GrpcClientRandomMessageService>();
 
                    // services.AddHostedService<FileSenderClient>();
 
